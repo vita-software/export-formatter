@@ -58,4 +58,9 @@ class Archive
     {
         return $this->separator->getNewLineCharacter();
     }
+
+    public function isFixed() : bool
+    {
+        return $this->separator->isFixed();
+    }
 }

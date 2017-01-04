@@ -105,4 +105,13 @@ class Field
         return $data[$this->name];
     }
 
+    public function getMaximumLength() : int
+    {
+        return $this->length->getMaximum();
+    }
+
+    public function getMinimumLength() : int
+    {
+        return $this->length->getMinimum();
+    }
 }

@@ -23,11 +23,9 @@ class Text implements Type
 
     public function isValid(Field $field, $value): bool
     {
-        $length = $field->getLength();
-
-        if ($length->getMinimum() > strlen($value)) {
+        if ($field->getMinimumLength() > strlen($value)) {
             return false;
-        } elseif ($length->getMaximum() < strlen($value)) {
+        } elseif ($field->getMaximumLength() < strlen($value)) {
             return false;
         }
 
@@ -40,7 +38,13 @@ class Text implements Type
             throw new InvalidValueException();
         }
 
-        return (string) $value;
+        if ($archive->isFixed()) {
+            $sizeDiff = $field->getMaximumLength() - strlen($value);
+
+            $value .= str_repeat(' ', $sizeDiff);
+        }
+
+        return (string) strtoupper($value);
     }
 
 }

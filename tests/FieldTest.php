@@ -9,7 +9,7 @@ use PHPUnit_Framework_TestCase as TestCase;
  * Class FieldTest
  * @package Vita\ExportFormatter
  */
-class FieldTest extends TestCase
+class FieldTest
 {
 
     /**

@@ -58,9 +58,16 @@ class TextTest extends \PHPUnit_Framework_TestCase
 
     public function testMaskMustReturnStringOnUppercase()
     {
-        $maskedValue = $this->maskValue('ABC', 1, 3);
+        $maskedValue = $this->maskValue('abc', 1, 3);
 
         $this->assertEquals('ABC', $maskedValue);
+    }
+
+    public function testMaskMustReturnStringWithSpacesWhenSeparatorIsFixed()
+    {
+        $maskedValue = $this->maskValue('ABC', 1, 5, true);
+
+        $this->assertEquals('ABC  ', $maskedValue);
     }
 
     protected function isValid(int $min, int $max, string $value): bool
@@ -68,32 +75,29 @@ class TextTest extends \PHPUnit_Framework_TestCase
         return $this->type->isValid($this->createField($min, $max), $value);
     }
 
-    protected function maskValue(string $value, int $min = 1, int $max = 5): string
+    protected function maskValue(string $value, int $min = 1, int $max = 5, $fixed = false): string
     {
         $field = $this->createField($min, $max);
-        $archive = $this->createArchive();
+        $archive = $this->createArchive($fixed);
 
         return $this->type->mask($archive, $field, $value);
     }
 
-    protected function createLength(int $min, int $max): Length
-    {
-        return new Length($min, $max);
-    }
-
-    protected function createArchive(): Archive
+    protected function createArchive($fixed = false): Archive
     {
         $archive = $this->prophesize(Archive::class);
+        $archive->isFixed()->willReturn($fixed);
 
         return $archive->reveal();
     }
 
     protected function createField(int $min = 1, int $max = 5): Field
     {
-        $length = $this->createLength($min, $max);
-
         $field = $this->prophesize(Field::class);
-        $field->getLength()->willReturn($length);
+
+        $field->getMaximumLength()->willReturn($max);
+        $field->getMinimumLength()->willReturn($min);
+
         return $field->reveal();
     }
 }

@@ -52,12 +52,52 @@ class Field
         $this->options = $options;
     }
 
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSequence(): int
+    {
+        return $this->sequence;
+    }
+
+    /**
+     * @return Type
+     */
+    public function getType(): Type
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return Length
+     */
+    public function getLength(): Length
+    {
+        return $this->length;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions(): array
+    {
+        return $this->options;
+    }
+
     public function getValueFromData(array $data, Separator $separator)
     {
         $value = $data[$this->name] ?? null;
 
         if (!$this->type->isValid($this, $value)) {
-            throw new
+
         }
         if ($separator->isFixed()) {
 

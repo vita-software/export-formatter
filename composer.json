@@ -1,0 +1,15 @@
+{
+  "name": "vita/export-formatter",
+  "description": "",
+  "autoload": {
+    "psr-4": {
+      "Vita\\ExportFormatter\\": "src/"
+    }
+  },
+  "require": {
+    "php": "~7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.7"
+  }
+}

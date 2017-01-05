@@ -92,17 +92,11 @@ class Field
         return $this->options;
     }
 
-    public function getValueFromData(array $data, Separator $separator)
+    public function getValueFromData(array $data, Archive $archive)
     {
         $value = $data[$this->name] ?? null;
 
-        if (!$this->type->isValid($this, $value)) {
-
-        }
-        if ($separator->isFixed()) {
-
-        }
-        return $data[$this->name];
+        return $this->type->mask($archive, $this, $value);
     }
 
     public function getMaximumLength() : int

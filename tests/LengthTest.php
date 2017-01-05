@@ -1,9 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Vita\ExportFormatter;
+namespace Vita\ExportFormatter\Tests;
 
 use PHPUnit_Framework_TestCase as TestCase;
+use Vita\ExportFormatter\Length;
 
 /**
  * Class LengthTest

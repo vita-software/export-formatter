@@ -15,23 +15,85 @@ class Numeric implements Type
 {
     const NUMERIC = 'numeric';
 
+    /**
+     * @var int
+     */
+    protected $precision;
+
+    /**
+     * @var string
+     */
+    protected $decimalSeparator;
+
+    /**
+     * @var string
+     */
+    protected $thousandSeparator;
+
+    /**
+     * Numeric constructor.
+     * @param int $precision
+     * @param string $decimalSeparator
+     * @param string $thousandSeparator
+     */
+    public function __construct(int $precision = 2, string $decimalSeparator = '.', string $thousandSeparator = '')
+    {
+        $this->precision = $precision;
+        $this->decimalSeparator = $decimalSeparator;
+        $this->thousandSeparator = $thousandSeparator;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrecision(): int
+    {
+        return $this->precision;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDecimalSeparator(): string
+    {
+        return $this->decimalSeparator;
+    }
+
+    /**
+     * @return string
+     */
+    public function getThousandSeparator(): string
+    {
+        return $this->thousandSeparator;
+    }
+
+    /**
+     * @return string
+     */
     public function getName(): string
     {
-        return self::NUMERIC;
+        return static::NUMERIC;
     }
 
     public function isValid(Field $field, $value): bool
     {
-        if (is_numeric($value)) {
+        if (!is_numeric($value)) {
             return false;
         }
 
-        return $field;
+        return true;
     }
 
     public function mask(Archive $archive, Field $field, $value): string
     {
-        // TODO: Implement mask() method.
+        $value = number_format($value, $this->precision, $this->decimalSeparator, $this->thousandSeparator);
+
+        if ($archive->isFixed()) {
+            $diffLength = $field->getMaximumLength() - strlen($value);
+            $value = str_repeat('0', $diffLength) . $value;
+        }
+
+        return $value;
     }
 
 }

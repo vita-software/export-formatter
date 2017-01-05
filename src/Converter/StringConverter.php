@@ -32,7 +32,7 @@ class StringConverter implements Converter
         foreach ($line->getData() as $data) {
             $test = '';
             foreach ($line->getFields() as $field) {
-                $test .= $field->getValueFromData($data, $archive->getSeparator());
+                $test .= $field->getValueFromData($data, $archive);
             }
             $newLines[] = $test;
         }

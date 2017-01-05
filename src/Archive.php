@@ -63,4 +63,9 @@ class Archive
     {
         return $this->separator->isFixed();
     }
+
+    public function getSeparatorCharacter() : string
+    {
+        return $this->separator->getSeparator();
+    }
 }

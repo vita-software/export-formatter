@@ -30,11 +30,11 @@ class StringConverter implements Converter
         $newLines = [];
 
         foreach ($line->getData() as $data) {
-            $test = '';
+            $test = [];
             foreach ($line->getFields() as $field) {
-                $test .= $field->getValueFromData($data, $archive);
+                $test[] = $field->getValueFromData($data, $archive);
             }
-            $newLines[] = $test;
+            $newLines[] = implode($archive->getSeparatorCharacter(), $test);
         }
 
         return $newLines;

@@ -12,12 +12,13 @@ use Vita\ExportFormatter\Separator;
 use Vita\ExportFormatter\Converter\StringConverter;
 
 $typeText = new Type\Text();
+$typeNumeric = new Type\Numeric(0);
 $separatorSemicolon = new Separator\Semicolon();
 
 $fields = [];
-$fields[] = new Field('id', 1, $typeText, new Length(1, 10));
-$fields[] = new Field('serie', 2, $typeText, new Length(3, 5));
-$fields[] = new Field('numero', 2, $typeText, new Length(3, 5));
+$fields[] = new Field('id', 1, $typeNumeric, new Length(1, 10));
+$fields[] = new Field('serie', 2, $typeNumeric, new Length(3, 5));
+$fields[] = new Field('numero', 2, $typeNumeric, new Length(3, 5));
 
 $data = [
     [

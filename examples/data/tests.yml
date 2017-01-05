@@ -1,0 +1,56 @@
+separator: fixed
+
+types:
+  numeric:
+    type: numeric
+    precision: 2
+    decimal_separator: ""
+
+fields:
+  codigo_empresa:
+    length: [7, 11]
+    type: "numeric"
+
+  referencia_1:
+    length: [12, 17]
+    type: "numeric"
+
+  referencia_2:
+    length: [18, 23]
+    type: "numeric"
+
+  faltas:
+    length: [24, 29]
+    type: "numeric"
+
+  horas_trabalhadas:
+    length: [30, 35]
+    type: "numeric"
+
+  dias_uteis:
+    length: [36, 37]
+    type: "numeric"
+
+  codigo_evento:
+    length: [38, 40]
+    type: "numeric"
+
+  valor_evento:
+    length: [41, 54]
+    type: "numeric"
+
+  codigo_funcionario:
+    length: [55, 60]
+    type: "numeric"
+
+  tipo_processo:
+    length: [61, 61]
+    tipo: 'T'
+
+  cpf_cnpj_empresa:
+    length: [62, 75]
+    type: "numeric"
+
+  pis_funcionario:
+    length: [76, 86]
+    type: "numeric"

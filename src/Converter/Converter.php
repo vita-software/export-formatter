@@ -16,5 +16,5 @@ interface Converter
      * @param Archive $archive
      * @return string
      */
-    public function converter(Archive $archive) : string;
+    public function converter(Archive $archive): string;
 }

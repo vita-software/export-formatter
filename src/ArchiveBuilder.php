@@ -79,7 +79,7 @@ class ArchiveBuilder
         $this->lines[] = new Line($fields, $data, count($this->lines) + 1);
     }
 
-    public function build() : Archive
+    public function build(): Archive
     {
         return new Archive($this->separator, $this->lines);
     }
@@ -89,7 +89,7 @@ class ArchiveBuilder
      * @param string $name
      * @return Separator
      */
-    protected function createSeparator(string $name) : Separator
+    protected function createSeparator(string $name): Separator
     {
         $className = __NAMESPACE__ . '\\Separator\\' . ucfirst($name);
 
@@ -105,11 +105,11 @@ class ArchiveBuilder
      * @param array $typesData
      * @return Type[]
      */
-    protected function createTypes(array $typesData) : array
+    protected function createTypes(array $typesData): array
     {
         $types = [];
 
-        foreach($typesData as $name => $typeData) {
+        foreach ($typesData as $name => $typeData) {
             $className = __NAMESPACE__ . '\\Type\\' . ucfirst($typeData['type']);
 
             if (!class_exists($className)) {
@@ -128,7 +128,7 @@ class ArchiveBuilder
      * @param array $fieldsData
      * @return Field[]
      */
-    protected function createFields(array $fieldsData) : array
+    protected function createFields(array $fieldsData): array
     {
         $fields = [];
 

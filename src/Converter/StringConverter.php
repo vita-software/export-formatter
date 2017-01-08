@@ -14,18 +14,18 @@ use Vita\ExportFormatter\Separator;
 class StringConverter implements Converter
 {
 
-    public function converter(Archive $archive) : string
+    public function converter(Archive $archive): string
     {
         $lines = [];
 
-        foreach($archive->getLines() as $line) {
+        foreach ($archive->getLines() as $line) {
             $lines = array_merge($lines, $this->createLines($archive, $line));
         }
 
         return implode($archive->getNewLineCharacter(), $lines);
     }
 
-    protected function createLines(Archive $archive, Line $line) : array
+    protected function createLines(Archive $archive, Line $line): array
     {
         $newLines = [];
 

@@ -99,12 +99,12 @@ class Field
         return $this->type->mask($archive, $this, $value);
     }
 
-    public function getMaximumLength() : int
+    public function getMaximumLength(): int
     {
         return $this->length->getMaximum();
     }
 
-    public function getMinimumLength() : int
+    public function getMinimumLength(): int
     {
         return $this->length->getMinimum();
     }

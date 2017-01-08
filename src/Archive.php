@@ -54,17 +54,17 @@ class Archive
         return $this->lines;
     }
 
-    public function getNewLineCharacter() : string
+    public function getNewLineCharacter(): string
     {
         return $this->separator->getNewLineCharacter();
     }
 
-    public function isFixed() : bool
+    public function isFixed(): bool
     {
         return $this->separator->isFixed();
     }
 
-    public function getSeparatorCharacter() : string
+    public function getSeparatorCharacter(): string
     {
         return $this->separator->getSeparator();
     }

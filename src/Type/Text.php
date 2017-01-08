@@ -44,7 +44,7 @@ class Text implements Type
             $value .= str_repeat(' ', $sizeDiff);
         }
 
-        return (string) strtoupper($value);
+        return (string)strtoupper($value);
     }
 
 }

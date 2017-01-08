@@ -4,7 +4,17 @@ types:
   numeric:
     type: numeric
     params:
+      precision: 0
+      decimal_separator: ""
+  money:
+    type: numeric
+    params:
       precision: 2
       decimal_separator: ""
   string:
     type: text
+  date:
+    type: datetime
+    params:
+      from: "Y-m-d"
+      to: "dmy"

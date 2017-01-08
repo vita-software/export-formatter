@@ -1,48 +1,40 @@
 fields:
+  sequencial:
+    length: [6]
+    type: "numeric"
   codigo_empresa:
-    length: [7, 11]
+    length: [5]
     type: "numeric"
-
   referencia_1:
-    length: [12, 17]
+    length: [6]
     type: "numeric"
-
   referencia_2:
-    length: [18, 23]
+    length: [6]
     type: "numeric"
-
   faltas:
-    length: [24, 29]
+    length: [6]
     type: "numeric"
-
   horas_trabalhadas:
-    length: [30, 35]
+    length: [6]
     type: "numeric"
-
   dias_uteis:
-    length: [36, 37]
+    length: [2]
     type: "numeric"
-
   codigo_evento:
-    length: [38, 40]
+    length: [3]
     type: "numeric"
-
   valor_evento:
-    length: [41, 54]
-    type: "numeric"
-
+    length: [14]
+    type: "money"
   codigo_funcionario:
-    length: [55, 60]
+    length: [6]
     type: "numeric"
-
   tipo_processo:
-    length: [61, 61]
+    length: [1]
     type: "string"
-
   cpf_cnpj_empresa:
-    length: [62, 75]
+    length: [14]
     type: "numeric"
-
   pis_funcionario:
-    length: [76, 86]
+    length: [11]
     type: "numeric"

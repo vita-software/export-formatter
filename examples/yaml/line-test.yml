@@ -1,11 +1,3 @@
-separator: fixed
-
-types:
-  numeric:
-    type: numeric
-    precision: 2
-    decimal_separator: ""
-
 fields:
   codigo_empresa:
     length: [7, 11]
@@ -45,7 +37,7 @@ fields:
 
   tipo_processo:
     length: [61, 61]
-    tipo: 'T'
+    type: "string"
 
   cpf_cnpj_empresa:
     length: [62, 75]

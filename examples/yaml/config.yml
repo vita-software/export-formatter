@@ -1,0 +1,10 @@
+separator: fixed
+
+types:
+  numeric:
+    type: numeric
+    params:
+      precision: 2
+      decimal_separator: ""
+  string:
+    type: text

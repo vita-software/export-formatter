@@ -23,12 +23,12 @@ class Length
     /**
      * Length constructor.
      * @param int $minimum
-     * @param int $maximum
+     * @param int|null $maximum
      */
-    public function __construct(int $minimum, int $maximum)
+    public function __construct(int $minimum, int $maximum = null)
     {
         $this->minimum = $minimum;
-        $this->maximum = $maximum;
+        $this->maximum = $maximum ?? $minimum;
     }
 
     /**

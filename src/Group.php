@@ -54,4 +54,9 @@ class Group
         return $this->source->count();
     }
 
+    public function getEntriesKeys() : array
+    {
+        return $this->source->getEntriesKeys();
+    }
+
 }

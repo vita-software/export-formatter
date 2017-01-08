@@ -28,11 +28,11 @@ class StringConverter implements Converter
     {
         $newLines = [];
 
-        for ($i = 0; $i < $group->getCountEntries(); $i++) {
+        foreach ($group->getEntriesKeys() as $entry) {
             $lineData = [];
             foreach ($group->getLines() as $line) {
                 foreach ($line->getFields() as $field) {
-                    $lineData[] = $field->getValueFromGroup($i, $group, $archive);
+                    $lineData[] = $field->getValueFromGroup($entry, $group, $archive);
                 }
                 $newLines[] = implode($archive->getSeparatorCharacter(), $lineData);
             }

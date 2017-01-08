@@ -35,6 +35,11 @@ class SimpleArray implements Source
         return $this->data[$entry][$key] ?? null;
     }
 
+    public function getEntriesKeys(): array
+    {
+        return array_keys($this->data);
+    }
+
     /**
      * @return int
      */

@@ -18,6 +18,11 @@ interface Source
     public function getValue(int $entry, string $key);
 
     /**
+     * @return array
+     */
+    public function getEntriesKeys() : array;
+
+    /**
      * @return int
      */
     public function count() : int;

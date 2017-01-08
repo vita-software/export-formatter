@@ -7,10 +7,10 @@ fields:
     type: "numeric"
   referencia_1:
     length: [6]
-    type: "numeric"
+    type: "date"
   referencia_2:
     length: [6]
-    type: "numeric"
+    type: "date"
   faltas:
     length: [6]
     type: "numeric"
@@ -27,8 +27,8 @@ fields:
     length: [14]
     type: "money"
   codigo_funcionario:
-    length: [6]
-    type: "numeric"
+    length: [0, 6]
+    type: "string"
   tipo_processo:
     length: [1]
     type: "string"

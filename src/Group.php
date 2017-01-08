@@ -15,20 +15,21 @@ class Group
     protected $lines;
 
     /**
-     * @var array
+     * @var Source
      */
-    protected $data;
+    protected $source;
 
     /**
      * Group constructor.
      * @param Line[] $lines
-     * @param array $data
+     * @param Source $source
      */
-    public function __construct(array $lines, array $data)
+    public function __construct(array $lines, Source $source)
     {
         $this->lines = $lines;
-        $this->data = $data;
+        $this->source = $source;
     }
+
 
     /**
      * @return Line[]
@@ -39,12 +40,18 @@ class Group
     }
 
     /**
-     * @return array
+     * @param int $entry
+     * @param string $key
+     * @return mixed
      */
-    public function getData(): array
+    public function getValueFromSource(int $entry, string $key)
     {
-        return $this->data;
+        return $this->source->getValue($entry, $key);
     }
 
+    public function getCountEntries(): int
+    {
+        return $this->source->count();
+    }
 
 }

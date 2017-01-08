@@ -92,9 +92,9 @@ class Field
         return $this->options;
     }
 
-    public function getValueFromData(array $data, Archive $archive)
+    public function getValueFromGroup(int $entry, Group $group, Archive $archive)
     {
-        $value = $data[$this->name] ?? null;
+        $value = $group->getValueFromSource($entry, $this->name);
 
         return $this->type->mask($archive, $this, $value);
     }

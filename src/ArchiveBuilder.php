@@ -68,9 +68,9 @@ class ArchiveBuilder
 
     /**
      * @param string $groupFile
-     * @param array $data
+     * @param Source $source
      */
-    public function addGroup(string $groupFile, array $data): void
+    public function addGroup(string $groupFile, Source $source): void
     {
         $configLine = $this->parser->parse(file_get_contents($groupFile));
 
@@ -80,7 +80,7 @@ class ArchiveBuilder
 
         $lines = $this->createLines($configLine['lines']);
 
-        $this->groups[] = new Group($lines, $data);
+        $this->groups[] = new Group($lines, $source);
     }
 
     public function build(): Archive
@@ -157,7 +157,7 @@ class ArchiveBuilder
     {
         $lines = [];
         foreach ($linesData as $lineData) {
-            if ($linesData['fields']) {
+            if (empty($lineData['fields'])) {
                 throw new EmptyFieldsException();
             }
             $fields = $this->createFields($lineData['fields']);

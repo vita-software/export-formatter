@@ -11,6 +11,7 @@ use Vita\ExportFormatter\Archive;
 use Vita\ExportFormatter\Separator;
 use Vita\ExportFormatter\Converter\StringConverter;
 use Vita\ExportFormatter\Group;
+use Vita\ExportFormatter\Source\SimpleArray;
 
 $typeText = new Type\Text();
 $typeNumeric = new Type\Numeric(0);
@@ -35,8 +36,8 @@ $data = [
 ];
 
 $lines = [];
-$lines[] = new Line($fields, $data);
-$groups = [new Group($lines, $data)];
+$lines[] = new Line($fields);
+$groups = [new Group($lines, new SimpleArray($data))];
 
 $archive = new Archive($separatorSemicolon, $groups);
 

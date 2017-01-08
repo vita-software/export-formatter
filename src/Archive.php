@@ -16,26 +16,19 @@ class Archive
     protected $separator;
 
     /**
-     * @var Line[]
+     * @var Group[]
      */
-    protected $lines;
-
-    /**
-     * @var bool
-     */
-    protected $ordered;
+    protected $groups;
 
     /**
      * Archive constructor.
      * @param Separator $separator
-     * @param Line[] $lines
-     * @param bool $ordered
+     * @param Group[] $groups
      */
-    public function __construct(Separator $separator, array $lines, bool $ordered = false)
+    public function __construct(Separator $separator, array $groups)
     {
         $this->separator = $separator;
-        $this->lines = $lines;
-        $this->ordered = $ordered;
+        $this->groups = $groups;
     }
 
     /**
@@ -47,11 +40,11 @@ class Archive
     }
 
     /**
-     * @return Line[]
+     * @return Group[]
      */
-    public function getLines(): array
+    public function getGroups(): array
     {
-        return $this->lines;
+        return $this->groups;
     }
 
     public function getNewLineCharacter(): string
@@ -59,11 +52,17 @@ class Archive
         return $this->separator->getNewLineCharacter();
     }
 
+    /**
+     * @return bool
+     */
     public function isFixed(): bool
     {
         return $this->separator->isFixed();
     }
 
+    /**
+     * @return string
+     */
     public function getSeparatorCharacter(): string
     {
         return $this->separator->getSeparator();

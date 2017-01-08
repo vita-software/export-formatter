@@ -10,6 +10,7 @@ use Vita\ExportFormatter\Line;
 use Vita\ExportFormatter\Archive;
 use Vita\ExportFormatter\Separator;
 use Vita\ExportFormatter\Converter\StringConverter;
+use Vita\ExportFormatter\Group;
 
 $typeText = new Type\Text();
 $typeNumeric = new Type\Numeric(0);
@@ -35,8 +36,9 @@ $data = [
 
 $lines = [];
 $lines[] = new Line($fields, $data);
+$groups = [new Group($lines, $data)];
 
-$archive = new Archive($separatorSemicolon, $lines);
+$archive = new Archive($separatorSemicolon, $groups);
 
 $stringConverter = new StringConverter();
 echo $stringConverter->converter($archive);

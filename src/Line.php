@@ -16,28 +16,13 @@ class Line
     protected $fields;
 
     /**
-     * @var array
-     */
-    protected $data;
-
-    /**
-     * @var int
-     */
-    protected $order;
-
-    /**
      * Line constructor.
      * @param Field[] $fields
-     * @param array $data
-     * @param int $order
      */
-    public function __construct(array $fields, array &$data, int $order = 1)
+    public function __construct(array $fields)
     {
         $this->fields = $fields;
-        $this->data = $data;
-        $this->order = $order;
     }
-
 
     /**
      * @return Field[]
@@ -46,22 +31,4 @@ class Line
     {
         return $this->fields;
     }
-
-    /**
-     * @return array
-     */
-    public function getData(): array
-    {
-        return $this->data;
-    }
-
-    /**
-     * @return int
-     */
-    public function getOrder(): int
-    {
-        return $this->order;
-    }
-
-
 }

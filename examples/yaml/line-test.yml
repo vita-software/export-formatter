@@ -1,40 +1,42 @@
-fields:
-  sequencial:
-    length: [6]
-    type: "numeric"
-  codigo_empresa:
-    length: [5]
-    type: "numeric"
-  referencia_1:
-    length: [6]
-    type: "date"
-  referencia_2:
-    length: [6]
-    type: "date"
-  faltas:
-    length: [6]
-    type: "numeric"
-  horas_trabalhadas:
-    length: [6]
-    type: "numeric"
-  dias_uteis:
-    length: [2]
-    type: "numeric"
-  codigo_evento:
-    length: [3]
-    type: "numeric"
-  valor_evento:
-    length: [14]
-    type: "money"
-  codigo_funcionario:
-    length: [0, 6]
-    type: "string"
-  tipo_processo:
-    length: [1]
-    type: "string"
-  cpf_cnpj_empresa:
-    length: [14]
-    type: "numeric"
-  pis_funcionario:
-    length: [11]
-    type: "numeric"
+lines:
+  type_a:
+    fields:
+      sequencial:
+        length: [6]
+        type: "numeric"
+      codigo_empresa:
+        length: [5]
+        type: "numeric"
+      referencia_1:
+        length: [6]
+        type: "date"
+      referencia_2:
+        length: [6]
+        type: "date"
+      faltas:
+        length: [6]
+        type: "numeric"
+      horas_trabalhadas:
+        length: [6]
+        type: "numeric"
+      dias_uteis:
+        length: [2]
+        type: "numeric"
+      codigo_evento:
+        length: [3]
+        type: "numeric"
+      valor_evento:
+        length: [14]
+        type: "money"
+      codigo_funcionario:
+        length: [0, 6]
+        type: "string"
+      tipo_processo:
+        length: [1]
+        type: "string"
+      cpf_cnpj_empresa:
+        length: [14]
+        type: "numeric"
+      pis_funcionario:
+        length: [11]
+        type: "numeric"

@@ -5,6 +5,7 @@ namespace Vita\ExportFormatter;
 
 use Symfony\Component\Yaml\Parser;
 use Vita\ExportFormatter\Exception\EmptyFieldsException;
+use Vita\ExportFormatter\Exception\EmptyLinesException;
 use Vita\ExportFormatter\Exception\EmptySeparatorException;
 use Vita\ExportFormatter\Exception\EmptyTypesException;
 use Vita\ExportFormatter\Exception\InvalidSeparatorException;
@@ -28,9 +29,9 @@ class ArchiveBuilder
     protected $types = [];
 
     /**
-     * @var Line[]
+     * @var Group[]
      */
-    protected $lines = [];
+    protected $groups = [];
 
     /**
      * @var Separator
@@ -49,7 +50,7 @@ class ArchiveBuilder
     /**
      * @param string $configFile
      */
-    public function setConfig(string $configFile)
+    public function setConfig(string $configFile): void
     {
         $data = $this->parser->parse(file_get_contents($configFile));
 
@@ -61,27 +62,30 @@ class ArchiveBuilder
             throw new EmptyTypesException();
         }
 
-
         $this->types = $this->createTypes($data['types']);
         $this->separator = $this->createSeparator($data['separator']);
     }
 
-    public function addLine(string $lineFile, array $data): void
+    /**
+     * @param string $groupFile
+     * @param array $data
+     */
+    public function addGroup(string $groupFile, array $data): void
     {
-        $configLine = $this->parser->parse(file_get_contents($lineFile));
+        $configLine = $this->parser->parse(file_get_contents($groupFile));
 
-        if (empty($configLine['fields'])) {
-            throw new EmptyFieldsException();
+        if (empty($configLine['lines'])) {
+            throw new EmptyLinesException();
         }
 
-        $fields = $this->createFields($configLine['fields']);
+        $lines = $this->createLines($configLine['lines']);
 
-        $this->lines[] = new Line($fields, $data, count($this->lines) + 1);
+        $this->groups[] = new Group($lines, $data);
     }
 
     public function build(): Archive
     {
-        return new Archive($this->separator, $this->lines);
+        return new Archive($this->separator, $this->groups);
     }
 
     /**
@@ -143,5 +147,23 @@ class ArchiveBuilder
         }
 
         return $fields;
+    }
+
+    /**
+     * @param Line[] $linesData
+     * @return array
+     */
+    protected function createLines(array $linesData): array
+    {
+        $lines = [];
+        foreach ($linesData as $lineData) {
+            if ($linesData['fields']) {
+                throw new EmptyFieldsException();
+            }
+            $fields = $this->createFields($lineData['fields']);
+            $lines[] = new Line($fields);
+        }
+
+        return $lines;
     }
 }

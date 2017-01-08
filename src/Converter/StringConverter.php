@@ -4,8 +4,7 @@ declare(strict_types = 1);
 namespace Vita\ExportFormatter\Converter;
 
 use Vita\ExportFormatter\Archive;
-use Vita\ExportFormatter\Line;
-use Vita\ExportFormatter\Separator;
+use Vita\ExportFormatter\Group;
 
 /**
  * Class StringConverter
@@ -18,23 +17,25 @@ class StringConverter implements Converter
     {
         $lines = [];
 
-        foreach ($archive->getLines() as $line) {
-            $lines = array_merge($lines, $this->createLines($archive, $line));
+        foreach ($archive->getGroups() as $group) {
+            $lines = array_merge($lines, $this->createLines($archive, $group));
         }
 
         return implode($archive->getNewLineCharacter(), $lines);
     }
 
-    protected function createLines(Archive $archive, Line $line): array
+    protected function createLines(Archive $archive, Group $group): array
     {
         $newLines = [];
 
-        foreach ($line->getData() as $data) {
-            $test = [];
-            foreach ($line->getFields() as $field) {
-                $test[] = $field->getValueFromData($data, $archive);
+        foreach ($group->getData() as $data) {
+            $lineData = [];
+            foreach ($group->getLines() as $line) {
+                foreach ($line->getFields() as $field) {
+                    $lineData[] = $field->getValueFromData($data, $archive);
+                }
+                $newLines[] = implode($archive->getSeparatorCharacter(), $lineData);
             }
-            $newLines[] = implode($archive->getSeparatorCharacter(), $test);
         }
 
         return $newLines;

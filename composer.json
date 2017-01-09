@@ -1,6 +1,7 @@
 {
   "name": "vita/export-formatter",
   "description": "",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Vita\\ExportFormatter\\": "src/"

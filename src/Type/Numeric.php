@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types = 0);
 
 namespace Vita\ExportFormatter\Type;
 
@@ -90,7 +90,9 @@ class Numeric implements Type
 
         if ($archive->isFixed()) {
             $diffLength = $field->getMaximumLength() - strlen($value);
-            $value = str_repeat('0', $diffLength) . $value;
+            if (0 < $diffLength) {
+                $value = str_repeat('0', $diffLength) . $value;
+            }
         }
 
         return $value;

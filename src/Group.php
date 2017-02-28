@@ -40,13 +40,18 @@ class Group
     }
 
     /**
-     * @param int $entry
+     * @param array $entry
      * @param string $key
      * @return mixed
      */
-    public function getValueFromSource(int $entry, string $key)
+    public function getValueFromSource(array $entry, string $key)
     {
         return $this->source->getValue($entry, $key);
+    }
+
+    public function getEntryLines(Line $line, int $entry): array
+    {
+        return $this->source->getEntryLines($line, $entry);
     }
 
     public function getCountEntries(): int
@@ -54,7 +59,7 @@ class Group
         return $this->source->count();
     }
 
-    public function getEntriesKeys() : array
+    public function getEntriesKeys(): array
     {
         return $this->source->getEntriesKeys();
     }

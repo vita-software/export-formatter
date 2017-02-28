@@ -24,19 +24,27 @@ $fields[] = new Field('numero', 2, $typeNumeric, new Length(3, 5));
 
 $data = [
     [
-        'id' => 134,
-        'serie' => 2,
-        'numero' => 12345,
+        'a' => [
+            [
+                'id' => 134,
+                'serie' => 2,
+                'numero' => 12345,
+            ],
+        ],
     ],
     [
-        'id' => 135,
-        'serie' => 2,
-        'numero' => 12346,
+        'a' => [
+            [
+                'id' => 135,
+                'serie' => 2,
+                'numero' => 12346,
+            ],
+        ],
     ],
 ];
 
 $lines = [];
-$lines[] = new Line($fields);
+$lines[] = new Line('a', $fields);
 $groups = [new Group($lines, new SimpleArray($data))];
 
 $archive = new Archive($separatorSemicolon, $groups);

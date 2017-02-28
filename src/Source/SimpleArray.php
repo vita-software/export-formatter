@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Vita\ExportFormatter\Source;
 
+use Vita\ExportFormatter\Line;
 use Vita\ExportFormatter\Source;
 
 /**
@@ -26,13 +27,23 @@ class SimpleArray implements Source
     }
 
     /**
+     * @param Line $line
      * @param int $entry
+     * @return array
+     */
+    public function getEntryLines(Line $line, int $entry): array
+    {
+        return $this->data[$entry][$line->getName()];
+    }
+
+    /**
+     * @param array $entry
      * @param string $key
      * @return mixed|null
      */
-    public function getValue(int $entry, string $key)
+    public function getValue(array $entry, string $key)
     {
-        return $this->data[$entry][$key] ?? null;
+        return $entry[$key] ?? null;
     }
 
     public function getEntriesKeys(): array

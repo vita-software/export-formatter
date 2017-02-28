@@ -1,5 +1,5 @@
 lines:
-  type_a:
+  valor:
     fields:
       sequencial:
         length: [6]

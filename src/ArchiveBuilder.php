@@ -156,12 +156,12 @@ class ArchiveBuilder
     protected function createLines(array $linesData): array
     {
         $lines = [];
-        foreach ($linesData as $lineData) {
+        foreach ($linesData as $name => $lineData) {
             if (empty($lineData['fields'])) {
                 throw new EmptyFieldsException();
             }
             $fields = $this->createFields($lineData['fields']);
-            $lines[] = new Line($fields);
+            $lines[] = new Line($name, $fields);
         }
 
         return $lines;

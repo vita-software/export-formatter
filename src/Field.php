@@ -92,7 +92,7 @@ class Field
         return $this->options;
     }
 
-    public function getValueFromGroup(int $entry, Group $group, Archive $archive)
+    public function getValueFromData(Archive $archive, Group $group, array $entry): string
     {
         $value = $group->getValueFromSource($entry, $this->name);
 

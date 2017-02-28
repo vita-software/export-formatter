@@ -11,19 +11,26 @@ interface Source
 {
 
     /**
-     * @param int $entry
+     * @param array $entry
      * @param string $key
      * @return mixed
      */
-    public function getValue(int $entry, string $key);
+    public function getValue(array $entry, string $key);
+
+    /**
+     * @param Line $line
+     * @param int $entry
+     * @return array
+     */
+    public function getEntryLines(Line $line, int $entry): array;
 
     /**
      * @return array
      */
-    public function getEntriesKeys() : array;
+    public function getEntriesKeys(): array;
 
     /**
      * @return int
      */
-    public function count() : int;
+    public function count(): int;
 }

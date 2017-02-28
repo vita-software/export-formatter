@@ -31,10 +31,13 @@ class StringConverter implements Converter
         foreach ($group->getEntriesKeys() as $entry) {
             $lineData = [];
             foreach ($group->getLines() as $line) {
-                foreach ($line->getFields() as $field) {
-                    $lineData[] = $field->getValueFromGroup($entry, $group, $archive);
+                $entryLines = $group->getEntryLines($line, $entry);
+                foreach ($entryLines as $entryLine) {
+                    foreach ($line->getFields() as $field) {
+                        $lineData[] = $field->getValueFromData($archive, $group, $entryLine);
+                    }
+                    $newLines[] = implode($archive->getSeparatorCharacter(), $lineData);
                 }
-                $newLines[] = implode($archive->getSeparatorCharacter(), $lineData);
             }
         }
 

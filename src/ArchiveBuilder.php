@@ -160,6 +160,7 @@ class ArchiveBuilder
             if (empty($lineData['fields'])) {
                 throw new EmptyFieldsException();
             }
+
             $fields = $this->createFields($lineData['fields']);
             $lines[] = new Line($name, $fields);
         }

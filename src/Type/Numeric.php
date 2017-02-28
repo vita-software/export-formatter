@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types = 0);
 
 namespace Vita\ExportFormatter\Type;
 
@@ -86,11 +86,13 @@ class Numeric implements Type
 
     public function mask(Archive $archive, Field $field, $value): string
     {
-        $value = number_format($value, $this->precision, $this->decimalSeparator, $this->thousandSeparator);
+        $value = number_format((float)$value, $this->precision, $this->decimalSeparator, $this->thousandSeparator);
 
         if ($archive->isFixed()) {
             $diffLength = $field->getMaximumLength() - strlen($value);
-            $value = str_repeat('0', $diffLength) . $value;
+            if (0 < $diffLength) {
+                $value = str_repeat('0', $diffLength) . $value;
+            }
         }
 
         return $value;

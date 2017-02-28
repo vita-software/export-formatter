@@ -11,17 +11,32 @@ class Line
 {
 
     /**
+     * @var string
+     */
+    protected $name;
+
+    /**
      * @var Field[]
      */
     protected $fields;
 
     /**
      * Line constructor.
+     * @param string $name
      * @param Field[] $fields
      */
-    public function __construct(array $fields)
+    public function __construct(string $name, array $fields)
     {
+        $this->name = $name;
         $this->fields = $fields;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     /**

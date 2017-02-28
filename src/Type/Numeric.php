@@ -86,7 +86,7 @@ class Numeric implements Type
 
     public function mask(Archive $archive, Field $field, $value): string
     {
-        $value = number_format($value, $this->precision, $this->decimalSeparator, $this->thousandSeparator);
+        $value = number_format((float)$value, $this->precision, $this->decimalSeparator, $this->thousandSeparator);
 
         if ($archive->isFixed()) {
             $diffLength = $field->getMaximumLength() - strlen($value);

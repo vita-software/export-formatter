@@ -29,10 +29,11 @@ class StringConverter implements Converter
         $newLines = [];
 
         foreach ($group->getEntriesKeys() as $entry) {
-            $lineData = [];
+
             foreach ($group->getLines() as $line) {
                 $entryLines = $group->getEntryLines($line, $entry);
                 foreach ($entryLines as $entryLine) {
+                    $lineData = [];
                     foreach ($line->getFields() as $field) {
                         $lineData[] = $field->getValueFromData($archive, $group, $entryLine);
                     }

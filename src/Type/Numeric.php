@@ -89,10 +89,7 @@ class Numeric implements Type
         $value = number_format((float)$value, $this->precision, $this->decimalSeparator, $this->thousandSeparator);
 
         if ($archive->isFixed()) {
-            $diffLength = $field->getMaximumLength() - strlen($value);
-            if (0 < $diffLength) {
-                $value = str_repeat('0', $diffLength) . $value;
-            }
+            $value = str_pad($value, $field->getMaximumLength(), '0', STR_PAD_LEFT);
         }
 
         return $value;

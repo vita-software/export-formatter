@@ -34,21 +34,17 @@ class Text implements Type
 
     public function mask(Archive $archive, Field $field, $value): string
     {
-        $maskedValue = '';
+        $value = $value ?? '';
         
         if (!$this->isValid($field, $value)) {
             throw new InvalidValueException($field->getName());
         }
 
         if ($archive->isFixed()) {
-            $sizeDiff = $field->getMaximumLength() - strlen($value);
-
-            $maskedValue .= str_repeat(' ', $sizeDiff);
+            $value = str_pad($value, $field->getMaximumLength(), ' ', STR_PAD_RIGHT);
         }
 
-        $maskedValue .= $value;
-
-        return (string)strtoupper($maskedValue);
+        return (string)strtoupper($value);
     }
 
 }

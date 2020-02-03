@@ -23,9 +23,9 @@ class Text implements Type
 
     public function isValid(Field $field, $value): bool
     {
-        if ($field->getMinimumLength() > strlen($value)) {
+        if ($field->getMinimumLength() > mb_strlen($value)) {
             return false;
-        } elseif ($field->getMaximumLength() < strlen($value)) {
+        } elseif ($field->getMaximumLength() < mb_strlen($value)) {
             return false;
         }
 
